@@ -1,0 +1,112 @@
+.header {
+    height: 60px; 
+    display: flex;
+    align-items: center;
+    background-color: #131921;
+    position: relative;
+    top: 0;
+    z-index: 100;
+}
+
+.header_logo {
+    display: flex;
+    align-items: center;
+    color: #ff9f00;
+    margin: 0 5px;
+}
+
+.header_logoImage {
+    margin-right: 10px;
+}
+
+.header_logoTitle {
+    text-decoration: none;
+    border: 0;
+    color:#ffb700;
+    margin-left: 5px;
+    font-family: 'SEGA LOGO FONT';
+    font-weight: 200;
+}
+
+.header_search {
+    display: flex;
+    flex: 1 ;
+    align-items: center;
+    border-radius: 24px;
+    margin: 0 10px;
+    width: 100%;
+}
+
+.header__searchInput {
+    height: 50px;
+    padding: 10px;
+    border: #ff9f00;
+    border-color: #ff9f00;
+    border-radius: 10px 0 0 10px;
+    width: 100%;
+}
+
+.header_searchInput:focus {
+    border-color: #ff9f00;
+    
+}
+
+.header__searchIcon {
+    height: 50px;
+    padding: 13px;
+    border: #ff9f00;
+    border-color: #ff9f00;
+    background-color: #ff9f00;
+    border-radius: 0 10px 10px 0;
+    width: 10%;
+}
+
+.header__searchImage {
+    padding: 5px;
+    height: 50px;
+    width: 10%;
+    border: #ff9f00;
+    background-color: #ff9f00;
+    border-radius: 0 10px 10px 0;
+}
+
+.header_nav {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.nav_item {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 10px;  
+    color: white;
+}
+
+.nav_itemLineOne {
+    font-size: 15px;
+}
+
+.nav_itemLineTwo {
+    font-size: 15px;
+    font-weight: 800; 
+}
+
+.nav_itemBasket {
+    display: flex;
+    align-items: center;
+    color: white;
+    margin-right: 50px;
+    margin-left: 10px;
+    z-index: 1;
+}
+
+.nav_basketCount {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 12px;
+    color: black;
+    z-index:2;
+    position: absolute;
+    font-weight: 100%;
+}

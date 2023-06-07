@@ -1,0 +1,51 @@
+.grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+    grid-gap: 30px;
+    justify-content: center;
+    padding: 10px;
+    border-color: 10px solid black;
+}
+
+.grid > article {
+    border: 2px solid black;
+    background-color: white;
+}
+
+.grid > article:hover {
+    transform: scale(1.1);
+    transition: all 1.5s;
+}
+
+.grid > article:nth-child(){
+    grid-row: span 3;
+}
+
+.grid >article img{
+    max-width: 100%;
+    padding-left: 30px;
+}
+
+.text{
+    position: relative;
+    padding: 0 20px 20px ;
+    text-align: center;
+}
+
+.Button_Container{
+    align-items: center;
+    text-align: center;
+}
+
+.addtocart{
+    align-self: center;
+    margin-top:10px;
+    margin-bottom:10px;
+    background-color:#ffb700;
+    border-radius: 10px 10px 10px 10px;
+    width:50%;
+}
+
+.addtocart:hover{
+    background-color: #ffa900;;;
+}
