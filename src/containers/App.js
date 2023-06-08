@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import Home from '../Home';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import Login from '../components/Login';
 import Header from '../Header';
 import Checkout from '../components/Checkout';
@@ -34,6 +34,20 @@ import Orders from '../components/Orders';
     const onButtonClick = () => {
       this.onSearchChange();
     }
+
+    const cartIncrementDecrement=(name,action)=>{
+      for (let i=0;i<initialState.cart.length;i++){
+        if (initialState.cart[i].name===name){
+        //this.setState(Object.assign(this.initialState.shoes[i],{addtoCartClicked:true}))
+        initialState.cart[i].count=action==="CART_ITEM_INCREMENT"?initialState.cart[i].count+1:initialState.cart[i].count-1;
+        initialState.shoppingcart_count= action==='CART_ITEM_INCREMENT'? initialState.shoppingcart_count+1:initialState.shoppingcart_count-1;
+        dispatch({
+          type: action,
+          item: initialState.cart
+      });
+        break;    
+      }} 
+    }
   
     const cartAction=(name, action)=>{
       for (let i=0;i<initialState.shoes.length;i++){
@@ -58,7 +72,7 @@ import Orders from '../components/Orders';
         <Route path="/login"  element={<Login updateEmail={updateEmail} checkout={onCheckout} />}>
         </Route>
         <Route path="/checkout" element={<><Header email={initialState.email} searchChange={onSearchChange} buttonClick={onButtonClick} checkout={onCheckout}/>
-        <Checkout cart={initialState.cart} cartAction={cartAction} checkout={onCheckout}/></>}>
+        <Checkout cart={initialState.cart} cartAction={cartAction} checkout={onCheckout} cartIncrementDecrement={cartIncrementDecrement}/></>}>
         </Route>
         <Route path="/paymentgateway" element={<PaymentGateWay/>}>
         </Route>

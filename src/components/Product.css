@@ -8,8 +8,9 @@
 }
 
 .grid > article {
-    border: 2px solid black;
+    border: 2px solid #ff9f00;
     background-color: white;
+    
 }
 
 .grid > article:hover {

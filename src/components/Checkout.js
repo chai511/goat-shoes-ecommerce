@@ -7,7 +7,7 @@ import { useStateValue } from "./StateProvider";
 
 export var Checkout_State="";
 
-function Checkout({cart,cartAction,checkout}) {
+function Checkout({cart,cartAction,checkout,cartIncrementDecrement}) {
     const [currentstate,dispatch]=useStateValue();
     Checkout_State=JSON.parse(JSON.stringify(currentstate))
     return (
@@ -28,6 +28,8 @@ function Checkout({cart,cartAction,checkout}) {
                             price = {item.price}
                             addtoCartClicked = {item.addtoCartClicked}
                             cartAction={cartAction}
+                            count={item.count}
+                            cartIncrementDecrement={cartIncrementDecrement}
                         />:<></>
                     ))} 
                     </main>

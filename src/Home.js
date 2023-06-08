@@ -4,7 +4,7 @@ import Scroll  from "./components/Scroll";
 import Header from "./Header";
 import { useStateValue } from "./components/StateProvider";
 
-function Home({email,searchChange,buttonClick,cartAction},checkout) {
+function Home({email,searchChange,buttonClick,cartAction,checkout}) {
     const [currentstate,dispatch] = useStateValue();
     const filteredshoes = currentstate.shoes.filter(shoe =>{
       return shoe.name.toLowerCase().includes(currentstate.searchfield.toLowerCase());

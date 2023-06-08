@@ -2,8 +2,7 @@ import React from "react";
 import "./SubTotal.css";
 import { useStateValue } from "./StateProvider";
 import { getCartTotal } from "./reducer";
-import Paymentfunction from "./Paymentfunction";
-import PaymentGateWay from "./PaymentGateWay";
+import {getCartItemsTotal} from "./reducer";
 import { Link } from "react-router-dom";
  
 function SubTotal({checkout}) {
@@ -11,7 +10,7 @@ function SubTotal({checkout}) {
     return (
         <div className="subtotal">
                         <p>
-                            Subtotal ({initialState.cart.length} items): <strong>₹{getCartTotal(initialState.cart)}</strong>
+                            Subtotal ({getCartItemsTotal(initialState.cart)} items): <strong>₹{getCartTotal(initialState.cart)}</strong>
                         </p>
                         <small className="subtotal__gift">
                             <input type="checkbox" /> This order contains a gift
