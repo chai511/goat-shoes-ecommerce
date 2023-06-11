@@ -12,7 +12,7 @@ import Orders from '../components/Orders';
   function App({updateEmail}){
     const [initialState,dispatch]=useStateValue();
 
-    useEffect(()=>{console.log('I am re-rendering...')},[initialState]);
+    useEffect(()=>{},[initialState]);
 
    const onSearchChange = (event) => {
       //initialState.searchfield= event.target.value;
@@ -39,11 +39,14 @@ import Orders from '../components/Orders';
       for (let i=0;i<initialState.cart.length;i++){
         if (initialState.cart[i].name===name){
         //this.setState(Object.assign(this.initialState.shoes[i],{addtoCartClicked:true}))
-        initialState.cart[i].count=action==="CART_ITEM_INCREMENT"?initialState.cart[i].count+1:initialState.cart[i].count-1;
-        initialState.shoppingcart_count= action==='CART_ITEM_INCREMENT'? initialState.shoppingcart_count+1:initialState.shoppingcart_count-1;
+        initialState.cart[i].count=action==="CART_ITEM_INCREMENT"?initialState.cart[i].count+1:
+        initialState.cart[i].count>0?initialState.cart[i].count-1:0;
+        initialState.shoppingcart_count= action==='CART_ITEM_INCREMENT'? 
+        initialState.shoppingcart_count+1:
+        initialState.cart[i].count>0?initialState.shoppingcart_count-1:initialState.shoppingcart_count;
         dispatch({
           type: action,
-          item: initialState.cart
+          item: {'index':i,'cartitem':initialState.cart[i]}
       });
         break;    
       }} 

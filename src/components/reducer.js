@@ -8,12 +8,10 @@ export const getCartTotal=(cart)=>{
 export const getCartItemsTotal=(cart)=>{
     return(cart.length>0?cart.reduce((count, item) => item.count + count, 0):0);
 }
-
 const reducer = (prevstate, action) => {
     switch(action.type) {
         case "CART_ITEM_INCREMENT":
-            console.log('I am in increment',prevstate.cart,action.item)
-            const idx = prevstate.cart.findIndex(
+            const idx1 = prevstate.cart.findIndex(
                 (cartItem) => cartItem.id === action.item.id
             );
             if (action.item['count']){
@@ -22,26 +20,47 @@ const reducer = (prevstate, action) => {
             else{
                 action.item['count']=1
             }
+
+            let newCart1 = [...prevstate.cart];
+
+            if (idx1>=0) {
+                newCart1[idx1]=action.item.cartItem     
+            } else {
+                console.warn(
+                    `Can't remove product(id: ${action.item.name}) as its not in the basket!`
+                )
+            }
           return {
                 ...prevstate,
-                cart:[...action.item]
+                cart:newCart1,
+                shoppingcart_count:getCartItemsTotal(newCart1)
             }
         case "CART_ITEM_DECREMENT":
-            console.log('I am in decrement',prevstate.cart,action.item)
-            const idx1 = prevstate.cart.findIndex(
+            const idx2 = prevstate.cart.findIndex(
                 (cartItem) => cartItem.id === action.item.id
             );
-            console.log('I am in decrement',prevstate,action.item)
-                if (action.item['count']>0){
+
+            if (action.item['count']>0){
                     action.item['count']=action.item['count']-1
                 }
                 else{
                     action.item['count']=0
                 }
+
+            let newCart2 = [...prevstate.cart];
+
+                if (idx2>=0) {
+                    newCart2[idx2]=action.item.cartItem     
+                } else {
+                    console.warn(
+                        `Can't remove product(id: ${action.item.name}) as its not in the basket!`
+                    )
+                }
     
                 return {
                     ...prevstate,
-                    cart:[...action.item]
+                    cart:newCart2,
+                    shoppingcart_count:getCartItemsTotal(newCart2)
                 }
             
         case "ADD_TO_CART":
@@ -53,7 +72,7 @@ const reducer = (prevstate, action) => {
             }
            return {
                 ...prevstate,
-                cart: [...prevstate.cart, action.item],
+                cart: [...prevstate.cart, action.item]
             }
         
         case "REMOVE_FROM_CART":
@@ -80,7 +99,8 @@ const reducer = (prevstate, action) => {
 
             return {
                 ...prevstate,
-                cart: newCart
+                cart: newCart,
+                shoppingcart_count:getCartItemsTotal(newCart)
             }
         case "ON_SEARCH_CHANGE":
             return {
